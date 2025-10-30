@@ -1,0 +1,69 @@
+﻿@page
+@model RegisterModel
+@{
+ViewData["Title"] = "Create account";
+Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center"> <div class="col-12 col-md-8 col-lg-5"> <div class="card shadow-sm my-4"> <div class="card-body p-4"> <div class="text-center mb-3"> <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-light border" style="width:56px;height:56px;"> <i class="bi bi-person-plus-fill" style="font-size:1.4rem;"></i> </div> <h3 class="mt-2 mb-0">Create account</h3> <div class="text-muted">Join your study rooms</div> </div>
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="mt-3">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+      <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+          <input asp-for="Input.Email" class="form-control" autocomplete="username" />
+        </div>
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Input.Password" class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+          <input asp-for="Input.Password" class="form-control" autocomplete="new-password" />
+        </div>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Input.ConfirmPassword" class="form-label">Confirm password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+          <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" />
+        </div>
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+      </div>
+
+      <button id="registerSubmit" type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-person-check-fill me-1"></i> Create account
+      </button>
+    </form>
+
+    <div class="text-center mt-3">
+      <span class="text-muted">Already have an account?</span>
+      <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Sign in</a>
+    </div>
+
+    @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+    {
+      <hr class="my-4" />
+      <div class="text-center text-muted mb-2">Or sign up with</div>
+      <div class="d-grid gap-2">
+        @foreach (var provider in Model.ExternalLogins!)
+        {
+          <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-grid">
+            <button type="submit" class="btn btn-outline-secondary" name="provider" value="@provider.Name">
+              @provider.DisplayName
+            </button>
+          </form>
+        }
+      </div>
+    }
+  </div>
+</div>
+</div> </div>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

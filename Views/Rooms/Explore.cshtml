@@ -1,0 +1,46 @@
+@model List<StudyRoom.Models.RoomCardVM>
+
+@{
+ViewData["Title"] = "Explore Rooms";
+var subjects = (IEnumerable<string>) (ViewBag.Subjects ?? Array.Empty<string>());
+string q = ViewBag.Query as string ?? "";
+string subject = ViewBag.Subject as string ?? "";
+string sort = ViewBag.Sort as string ?? "";
+}
+
+<h2 class="mb-3">Explore Public Rooms</h2><form method="get" class="row g-2 mb-3"> <div class="col-md-5"> <input name="q" class="form-control" placeholder="Search by name or description" value="@q" /> </div> <div class="col-md-3"> <select name="subject" class="form-select"> <option value="">All subjects</option> @foreach (var s in subjects) { <option value="@s" selected="@(s == subject)">@s</option> } </select> </div> <div class="col-md-2"> <select name="sort" class="form-select"> <option value="">Sort: Default</option> <option value="active" selected="@(sort=="active")">Most active</option> <option value="new" selected="@(sort=="new")">Newest</option> </select> </div> <div class="col-md-2"> <button class="btn btn-primary w-100">Filter</button> </div> </form>
+@if (!Model.Any())
+{
+<div class="alert alert-light">No public rooms found.</div>
+}
+else
+{
+<div class="row g-3">
+@foreach (var r in Model)
+{
+<div class="col-md-6">
+<div class="card h-100">
+<div class="card-body">
+<div class="d-flex justify-content-between">
+<h5 class="card-title mb-1">@r.Name</h5>
+@if (!string.IsNullOrWhiteSpace(r.Subject))
+{
+<span class="badge bg-secondary">@r.Subject</span>
+}
+</div>
+@if (!string.IsNullOrWhiteSpace(r.Description))
+{
+<p class="card-text text-muted mb-2">@r.Description</p>
+}
+<div class="small text-muted">
+Members: @r.MembersCount · Online now: <strong>@r.OnlineCount</strong>
+</div>
+</div>
+<div class="card-footer bg-transparent d-flex justify-content-end">
+<a class="btn btn-sm btn-outline-primary" href="@Url.Action("Details","Rooms", new { id = r.Id })">Open</a>
+</div>
+</div>
+</div>
+}
+</div>
+}

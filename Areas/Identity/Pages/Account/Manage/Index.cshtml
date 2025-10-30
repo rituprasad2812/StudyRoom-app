@@ -1,0 +1,48 @@
+﻿@page
+@model StudyRoom.Areas.Identity.Pages.Account.Manage.IndexModel
+@{
+ViewData["Title"] = "Profile";
+// Force the main app layout; this overrides any Manage/_ViewStart that points to a Manage layout.
+Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@ViewData["Title"]</h3> <partial name="_StatusMessage" for="StatusMessage" /><div class="row"> <div class="col-md-3"> <!-- Render Manage nav exactly once --> <partial name="_ManageNav" /> </div> <div class="col-md-9"> <div class="card"> <div class="card-body"> <form method="post"> <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input class="form-control"
+               value="@(Model.Username?.Contains("@") == true ? Model.Username.Split('@')[0] : Model.Username)"
+               disabled />
+        <div class="form-text">This is based on your email. Set a nicer Display name below.</div>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Input.DisplayName" class="form-label"></label>
+        <input asp-for="Input.DisplayName" class="form-control" maxlength="50" />
+        <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+        <div class="form-text">Shown to others in chat, tasks, and polls.</div>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+        <input asp-for="Input.PhoneNumber" class="form-control" />
+        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input class="form-control" value="@Model.Email" disabled />
+        <div class="form-text">
+          <a asp-page="./Email">Manage email</a> ·
+          <a asp-page="./ChangePassword">Change password</a>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

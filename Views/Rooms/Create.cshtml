@@ -1,0 +1,36 @@
+@model StudyRoom.Models.Room
+@{
+    ViewData["Title"] = "Create Room";
+}
+
+<h2>Create Room</h2>
+<form asp-action="Create" method="post" class="mt-3">
+    <div class="mb-3"> <label asp-for="Name" class="form-label"></label> <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span> </div>
+        <div class="mb-3">
+    <label asp-for="Subject" class="form-label"></label>
+    <input asp-for="Subject" class="form-control"/>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control"></textarea>
+</div>
+
+<div class="form-check mb-3">
+    <input asp-for="IsPrivate" class="form-check-input" id="isPrivateChk"/>
+    <label asp-for="IsPrivate" class="form-check-label"></label>
+</div>
+
+<div class="mb-3" id="joinCodeWrap" style="display:none;">
+    <label asp-for="JoinCode" class="form-label">Join Code (required for private rooms)</label>
+    <input asp-for="JoinCode" class="form-control" maxlength="32" />
+    <small class="text-muted">Share this code with people you want to invite.</small>
+</div>
+
+<button class="btn btn-primary">Create</button>
+</form>
+@section Scripts{
+
+<script> const chk = document.getElementById('isPrivateChk'); const wrap = document.getElementById('joinCodeWrap'); function sync(){ wrap.style.display = chk.checked ? 'block' : 'none'; } chk?.addEventListener('change', sync); sync(); </script>
+}

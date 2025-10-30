@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StudyRoom.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav align-items-center"> @if (SignInManager.IsSignedIn(User)) { var user = await UserManager.GetUserAsync(User);
+// Nice display name without changing Identity pages
+string raw = user?.UserName ?? "";
+string fallback = raw.Contains('@') ? raw.Split('@')[0] : raw;
+var name = user?.DisplayName ?? (string.IsNullOrWhiteSpace(fallback) ? "User" : fallback);
+
+<li class="nav-item me-2">
+    <!-- This goes to the built-in Identity Manage page -->
+    <a class="nav-link d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index">
+        <span class="rounded-circle bg-secondary text-white d-inline-flex justify-content-center align-items-center me-2"
+              style="width:28px;height:28px;font-size:.8rem;">
+            @(name.Substring(0,1).ToUpper())
+        </span>
+        <span>@name</span>
+    </a>
+</li>
+<li class="nav-item">
+    <form class="d-inline" asp-area="Identity" asp-page="/Account/Logout" method="post"
+          asp-route-returnUrl="@Url.Action("Index","Rooms", new { area = "" })">
+        <button type="submit" class="btn btn-link nav-link px-0">Logout</button>
+    </form>
+</li>
+}
+else
+{
+<li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+<li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+}
+</ul>

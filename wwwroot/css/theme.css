@@ -1,0 +1,332 @@
+/* Font */
+html,
+body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Links */
+a {
+    color: #0ea5a4;
+}
+
+a:hover,
+a:focus {
+    color: #0b8e8d;
+}
+
+/* Textured background (light) — dots via repeating radial gradients (no data URLs) */
+body {
+    background-color: #f4f8fb;
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        radial-gradient(1200px 500px at -10% -10%, rgba(14, 165, 164, 0.08), transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, rgba(14, 165, 164, 0.06), transparent 60%),
+        linear-gradient(180deg, #f7f9fc 0%, #edf2f7 100%);
+    background-size: 48px 48px, 48px 48px, auto, auto, auto;
+    background-position: 0 0, 24px 24px, 0 0, 0 0, 0 0;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+}
+
+/* Glass navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.navbar .nav-link {
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    opacity: 1;
+}
+
+/* Glass cards */
+.card {
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+
+.card-header {
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.65);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #0ea5a4;
+    border-color: #0ea5a4;
+}
+
+.btn-primary:hover {
+    background-color: #0b8e8d;
+    border-color: #0b8e8d;
+}
+
+.btn-outline-danger {
+    border-width: 1px;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    border-radius: 0.6rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 164, 0.15);
+    border-color: rgba(14, 165, 164, 0.6);
+}
+
+/* Toasts */
+.toast {
+    border-radius: 0.6rem;
+}
+
+/* Chat area + bubbles */
+#chatMessages {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 0.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 0.75rem;
+    backdrop-filter: blur(6px);
+}
+
+.msg {
+    max-width: 85%;
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.9rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.msg .meta {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+}
+
+.msg.other {
+    background: #ffffff;
+}
+
+.msg.my {
+    background: rgba(14, 165, 164, 0.10);
+    margin-left: auto;
+}
+
+/* Tasks */
+.task-item {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.6rem;
+}
+
+#taskList-todo .task-item {
+    border-left: 4px solid #0d6efd;
+}
+
+#taskList-doing .task-item {
+    border-left: 4px solid #ffc107;
+}
+
+#taskList-done .task-item {
+    border-left: 4px solid #198754;
+}
+
+/* Chips */
+.chip {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Polls */
+#pollsList .progress {
+    height: 6px;
+}
+
+#pollsList .progress-bar {
+    background-image: linear-gradient(90deg, rgba(14, 165, 164, 0.9), rgba(14, 165, 164, 0.6));
+}
+
+#pollsList .form-check-label {
+    font-weight: 600;
+}
+
+/* Timer display */
+#timerDisplay {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Dark mode — textured dots via repeating radial gradients */
+[data-bs-theme="dark"] body {
+    background-color: #0f1220;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        radial-gradient(1000px 500px at -10% -10%, rgba(14, 165, 164, 0.14), transparent 60%),
+        radial-gradient(700px 400px at 110% 10%, rgba(14, 165, 164, 0.10), transparent 60%),
+        linear-gradient(180deg, #0f1220 0%, #0e1322 100%);
+    background-size: 48px 48px, 48px 48px, auto, auto, auto;
+    background-position: 0 0, 24px 24px, 0 0, 0 0, 0 0;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background: rgba(20, 23, 42, 0.6);
+    border-bottom-color: #2b2e45;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-bs-theme="dark"] .card {
+    background: rgba(20, 23, 42, 0.68);
+    border-color: #272a3f;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+[data-bs-theme="dark"] .card-header {
+    background: rgba(20, 23, 42, 0.55);
+    border-bottom-color: #2b2e45;
+}
+
+[data-bs-theme="dark"] #chatMessages {
+    background: rgba(26, 30, 51, 0.6);
+    border-color: #2b2e45;
+}
+
+[data-bs-theme="dark"] .msg {
+    border-color: #2b2e45;
+}
+
+[data-bs-theme="dark"] .msg.other {
+    background: #15182a;
+}
+
+[data-bs-theme="dark"] .msg.my {
+    background: rgba(14, 165, 164, 0.18);
+}
+
+/* Container width */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+}
+
+/* Hero at top of room page */
+.room-hero {
+    border: 0;
+    border-radius: 16px;
+    padding: 16px 20px;
+    background:
+        radial-gradient(1200px 500px at -10% -10%, rgba(14, 165, 164, 0.10), transparent 60%),
+        radial-gradient(900px 400px at 110% 10%, rgba(14, 165, 164, 0.08), transparent 60%),
+        linear-gradient(180deg, #f7fafc 0%, #eef6f7 100%);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+[data-bs-theme="dark"] .room-hero {
+    background:
+        radial-gradient(1000px 500px at -10% -10%, rgba(14, 165, 164, 0.20), transparent 60%),
+        radial-gradient(700px 400px at 110% 10%, rgba(14, 165, 164, 0.12), transparent 60%),
+        linear-gradient(180deg, #0f1320 0%, #0e1622 100%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.room-hero .room-title {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.room-hero .chip {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    background: rgba(14, 165, 164, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="dark"] .room-hero .chip {
+    background: rgba(14, 165, 164, 0.22);
+    border-color: #2b2e45;
+}
+
+/* Section header icons */
+.card-header .icon {
+    margin-right: 0.4rem;
+    opacity: 0.9;
+}
+
+/* Optional: subtle card hover on desktop */
+@media (hover: hover) {
+    .card {
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.10);
+    }
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+/* STRONG textured background (light) */
+html {
+    background-color: #f4f8fb !important;
+    background-image:
+        radial-gradient(rgba(14, 165, 164, 0.20) 1px, transparent 1px),
+        radial-gradient(rgba(14, 165, 164, 0.12) 1px, transparent 1px),
+        radial-gradient(700px 350px at -10% -10%, rgba(14, 165, 164, 0.18), transparent 70%),
+        radial-gradient(600px 300px at 110% 5%, rgba(14, 165, 164, 0.14), transparent 70%),
+        linear-gradient(180deg, #f7fbff 0%, #eaf4f4 100%);
+    background-size: 18px 18px, 18px 18px, auto, auto, auto;
+    background-position: 0 0, 9px 9px, 0 0, 0 0, 0 0;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+}
+
+body {
+    background: transparent !important;
+}
+
+/* STRONG textured background (dark) */
+[data-bs-theme="dark"] html {
+    background-color: #0f1220 !important;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(650px 325px at -10% -10%, rgba(14, 165, 164, 0.24), transparent 70%),
+        radial-gradient(580px 290px at 110% 5%, rgba(14, 165, 164, 0.18), transparent 70%),
+        linear-gradient(180deg, #0f1220 0%, #0e1322 100%);
+    background-size: 18px 18px, 18px 18px, auto, auto, auto;
+    background-position: 0 0, 9px 9px, 0 0, 0 0, 0 0;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+}
+
+[data-bs-theme="dark"] body {
+    background: transparent !important;
+}
