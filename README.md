@@ -219,5 +219,4 @@ Manages synchronized Pomodoro timers — start, pause, and resume actions for al
 
 ## 📄 License
 
-MIT License © 2025
-Developed by **Ritu**
+MIT (or your preferred license). Add a LICENSE file if needed.
