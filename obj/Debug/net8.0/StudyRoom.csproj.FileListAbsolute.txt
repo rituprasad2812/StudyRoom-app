@@ -291,3 +291,4 @@ D:\C DATA\Documents\AMTICS099\StudyRoom\bin\Debug\net8.0\ru\Microsoft.CodeAnalys
 D:\C DATA\Documents\AMTICS099\StudyRoom\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\C DATA\Documents\AMTICS099\StudyRoom\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\C DATA\Documents\AMTICS099\StudyRoom\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\C DATA\Documents\AMTICS099\StudyRoom\obj\Debug\net8.0\StudyRoom.sourcelink.json
